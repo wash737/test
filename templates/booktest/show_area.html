@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+</head>
+<body>
+<ul>
+    {% for area in page %}
+        <li>{{ area.atitle }}</li>
+    {% endfor %}
+</ul>
+{% if page.has_previous %}
+{% comment %}
+    <span><a href="/show_area/{{ page.number|add:'-1' }}">上一页</a></span>
+    下面是另一种写法
+{% endcomment %}
+    <span><a href="/show_area/{{ page.previous_page_number }}">上一页</a></span>
+{% endif %}
+{% for p in page.paginator.page_range %}
+    {% if page.number == p %}
+        <span>{{ p }}&nbsp&nbsp</span>
+    {% else %}
+        <span><a href="/show_area/{{ p }}">{{ p }}</a>&nbsp&nbsp</span>
+    {% endif %}
+{% endfor %}
+
+{% if page.has_next %}
+{% comment %}
+    <span><a href="/show_area/{{ page.number|add:'+1' }}">下一页</a></span>
+    下面是另一种写法
+{% endcomment %}
+    <span><a href="/show_area/{{ page.next_page_number }}">下一页</a></span>
+{% endif %}
+<span>共{{ page.paginator.num_pages }}页</span>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/static/js/jquery.min.js"></script>
+    <script>
+        $(function (){
+            //获取省的信息
+            $.get("/find_areas", function (data){
+                //回调函数
+                $.each(data.data, function(index, item){
+                    $("#prov").append("<option value='"+item.id+"'>"+item.atitle+"</option>")
+                })
+            });
+
+            $("#prov").change(function (){
+                $("#city").empty().append("<option>请选择市</option>")
+                $("#count").empty().append("<option>请选择县</option>")
+                parentId = $("#prov").val()
+                $.get("/find_areas/"+parentId, function (data){
+                    //回调函数
+                    $.each(data.data, function(index, item){
+                        $("#city").append("<option value='"+item.id+"'>"+item.atitle+"</option>")
+                    })
+                });
+            });
+            $("#city").change(function (){
+                $("#count").empty().append("<option>请选择县</option>")
+                parentId = $("#city").val()
+                $.get("/find_areas/"+parentId, function (data){
+                    //回调函数
+                    $.each(data.data, function(index, item){
+                        $("#count").append("<option value='"+item.id+"'>"+item.atitle+"</option>")
+                    })
+                });
+            })
+        })
+    </script>
+    <title>省市县</title>
+</head>
+<body>
+<select id="prov"><option>请选择省</option></select>
+<select id="city"><option>请选择市</option></select>
+<select id="count"><option>请选择县</option></select>
+</body>
+</html>

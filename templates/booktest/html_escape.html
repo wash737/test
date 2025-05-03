@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html转义</title>
+</head>
+<body>
+{{ content }} </br>
+关闭html转义 1使用safe过滤器 </br>
+{{ content|safe }} </br>
+关闭html转义 2使用safe过滤器 off关闭转义 on开启转义 </br>
+{% autoescape off %}
+    {{ content }}
+{% endautoescape %}
+</br>
+</body>
+</html>

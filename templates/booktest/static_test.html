@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态文件</title>
+</head>
+<body>
+<img src="/static/images/mm.jpg" width="200", height="100"></br>
+{{ basedir }}
+{{ staticdir }}
+动态获取STATIC_URL</br>
+<img src="{% static 'images/mm.jpg' %}" width="200", height="100"></br>
+</body>
+</html>

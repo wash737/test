@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load filter %}
+<head>
+    <meta charset="UTF-8">
+    <title>模版过滤器</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for book in books %}
+            {% comment %}forloop.counter 显示序号{% endcomment %}
+{#            {% if book.id >= 2 %}#}
+            {% if book.id|mode %}
+                <li class="red">{{ forloop.counter }} -- {{ book.btitle }} -- {{ book.bpub_date|date:"Y年-m月-j日" }}</li>
+            {% else %}
+                <li class="green">{{ book.btitle }} -- {{ book.bpub_date }}</li>
+            {% endif %}
+        {% empty %}<li>暂无图书信息</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

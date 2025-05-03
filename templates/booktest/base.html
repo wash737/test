@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%}父模板文件{% endblock title %}</title>
+</head>
+{% comment %}
+继承父模板之后 不可以在子模板中添加其他内容 如果需要添加其他内容 需要在父模板中添加预留块 使用标签 {% block 块名 %}{% endblock 块名 %}
+预留块中可以不写内容
+预留好之后 在子模板中使用  {% bloco 块名 %} 这里写你的内容 {% endbloco 块名 %}
+{% endcomment %}
+
+<body>
+<h1>导航条</h1>
+
+{% block c1%}
+<input type="text">
+{% endblock c1 %}
+
+<h1>版权信息</h1>
+</body>
+</html>
