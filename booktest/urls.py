@@ -37,4 +37,5 @@ urlpatterns = [
     re_path(r"^show_area/(\d*)$", views.show_area),
     re_path(r"^find_areas/(\d*)$", views.find_areas),
     path("areas", views.areas),
+    path("test11", views.test),
 ]

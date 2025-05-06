@@ -241,3 +241,7 @@ def find_areas(request, parentId):
     for area in areas:
         data.append({"id": area.id, "atitle": area.atitle})
     return JsonResponse({"data": data})
+
+
+def test(request):
+    return HttpResponse("test")
